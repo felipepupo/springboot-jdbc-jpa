@@ -2,11 +2,22 @@ package com.example.springbootjdbcjpa.entity;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+
+@Entity
+@NamedQuery(name="find_all_persons", query="select p from Person p")
 public class Person {
-    private int id;
-    private String name;
-    private String location;
-    private Date birthDate;
+
+    @Id
+	@GeneratedValue
+	private int id;
+
+	private String name;
+	private String location;
+	private Date birthDate;
 
     public Person() {
         
@@ -20,6 +31,13 @@ public class Person {
         this.birthDate = birthDate;
     }
 
+    public Person(String name, String location, Date birthDate) {
+		super();
+		this.name = name;
+		this.location = location;
+		this.birthDate = birthDate;
+	}
+
     public int getId() {
         return id;
     }
@@ -28,11 +46,11 @@ public class Person {
         this.id = id;
     }
 
-    public String getname() {
+    public String getName() {
         return name;
     }
 
-    public void setname(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -44,11 +62,11 @@ public class Person {
         this.location = location;
     }
 
-    public Date getbirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setbirthDate(Date birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 
